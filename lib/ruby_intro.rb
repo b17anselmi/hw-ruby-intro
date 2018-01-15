@@ -16,6 +16,7 @@ def max_2_sum(array)
 =begin
 Define a method `max_2_sum(array)` which takes an array of integers as an argument and returns the sum of its two largest elements. For an empty array it should return zero. For an array with just one element, it should return that element. Run associated tests via:  `$ rspec spec/part1_spec.rb:23`
 =end
+#needs to be cleaned up utilizing array indexes after sorting (take last two)
 #possible approaches - find max (if there is a ruby method for that) then delete it from array, then take the max again and add the two of them
 array.sort! #sort the array in ascending order
 max = array.max #store maximum element in array in the variable max
@@ -27,6 +28,8 @@ end
 puts max_2_sum(arr)
 #potential better approach would be sorting and taking last element, then poping it off, could reduce code by might not
 
+
+#not complete (unlike commit message indicates)
 def sum_to_n?(array, n)
 =begin
 Define a method `sum_to_n?(array, n)` that takes an array of integers and an additional integer, n, as arguments and returns true if any two elements in the array of integers sum to n. `sum_to_n?([], n)` should return false for any value of n, by definition. Run associated tests via:  `$ rspec spec/part1_spec.rb:42`
@@ -34,16 +37,9 @@ Define a method `sum_to_n?(array, n)` that takes an array of integers and an add
 You can check your progress on the all the above by running `$ rspec spec/part1_spec.rb`.
 
 =end
-#there is a better way to do this
-#sums=[]
-#i=0
-#array.each{|x,y| sums[i]=x+y (i+=1)}
-#if sums[i]==n
-#return true
-#i+=1
-#end
-#else return false
-#i+=1
+#.permutation splits array into arrays of two containing all the values
+(arr.empty? && n.zero?) || arr.permutation(2).any? { |a, b| a + b == n }
+#return true if the array is empty and input number ==0 or if the sums of the subsets of the array return n
 end
 #puts sum_to_n?(arr, 9)
 # Part 2
@@ -62,14 +58,10 @@ Define a method `starts_with_consonant?(s)` that takes a string and returns true
 =end
 #convert to lowercase
 s.downcase!
-if s[0]==a || s[0]==e || s[0] == i || s[0] ==o || s[0] ==u #look for more elegant approach
-return false
-end
-else return true
-end
+return false if s[0]=="a" || s[0]=="e" || s[0] == "i" || s[0] =="o" || s[0] =="u" else return false #look for more elegant approach
 end
 #I'm messing up the syntax here, but the general idea is right
-starts_with_consonant("Hello world")
+starts_with_consonant?("Hello world")
 
 def binary_multiple_of_4? s
 =begin
