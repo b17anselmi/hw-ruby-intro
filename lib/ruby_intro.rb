@@ -28,8 +28,6 @@ end
 puts max_2_sum(arr)
 #potential better approach would be sorting and taking last element, then poping it off, could reduce code by might not
 
-
-#not complete (unlike commit message indicates)
 def sum_to_n?(array, n)
 =begin
 Define a method `sum_to_n?(array, n)` that takes an array of integers and an additional integer, n, as arguments and returns true if any two elements in the array of integers sum to n. `sum_to_n?([], n)` should return false for any value of n, by definition. Run associated tests via:  `$ rspec spec/part1_spec.rb:42`
@@ -38,10 +36,13 @@ You can check your progress on the all the above by running `$ rspec spec/part1_
 
 =end
 #.permutation splits array into arrays of two containing all the values
-(arr.empty? && n.zero?) || arr.permutation(2).any? { |a, b| a + b == n }
+(array.empty? && n.zero?) || array.permutation(2).any? { |a, b| a + b == n }
 #return true if the array is empty and input number ==0 or if the sums of the subsets of the array return n
 end
-#puts sum_to_n?(arr, 9)
+arr = [3,4,5]
+puts sum_to_n?(arr, 9)
+
+
 # Part 2
 
 def hello(name)
