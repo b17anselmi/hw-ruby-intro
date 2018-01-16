@@ -63,15 +63,19 @@ return !(s[0]=="a" || s[0]=="e" || s[0] == "i" || s[0] =="o" || s[0] =="u")
 end
 puts starts_with_consonant?("Hello world")
 
-def binary_multiple_of_4? s
+
+puts "Enter binary number: "
+string = gets.chomp
+def binary_multiple_of_4?(s)
 =begin
 Define a method `binary_multiple_of_4?(s)` that takes a string and returns true if the string represents a binary number that is a multiple of 4. NOTE: be sure it returns false if the string is not a valid binary number!  Run associated tests via:  `$ rspec -e '#binary_multiple_of_4?' spec/part2_spec.rb`
 
 You can check your progress on the all the above by running `$ rspec spec/part2_spec.rb`.
-
-
 =end
+s.unpack("B*")
+
 end
+puts binary_multiple_of_4?(string)
 
 # Part 3
 
