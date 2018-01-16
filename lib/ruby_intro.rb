@@ -39,7 +39,7 @@ You can check your progress on the all the above by running `$ rspec spec/part1_
 (array.empty? && n.zero?) || array.permutation(2).any? { |a, b| a + b == n }
 #return true if the array is empty and input number ==0 or if the sums of the subsets of the array return n
 end
-arr = [3,4,5]
+arr = [34,5,8]
 puts sum_to_n?(arr, 9)
 
 
@@ -59,10 +59,9 @@ Define a method `starts_with_consonant?(s)` that takes a string and returns true
 =end
 #convert to lowercase
 s.downcase!
-return false if s[0]=="a" || s[0]=="e" || s[0] == "i" || s[0] =="o" || s[0] =="u" else return false #look for more elegant approach
+return !(s[0]=="a" || s[0]=="e" || s[0] == "i" || s[0] =="o" || s[0] =="u")
 end
-#I'm messing up the syntax here, but the general idea is right
-starts_with_consonant?("Hello world")
+puts starts_with_consonant?("Hello world")
 
 def binary_multiple_of_4? s
 =begin
