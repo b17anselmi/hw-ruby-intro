@@ -77,20 +77,6 @@ You can check your progress on the all the above by running `$ rspec spec/part2_
         return false
       end
 	end
-#else
-#return false
-#end
-
- #     return true
-  #  elsif /[a-zA-Z^$3-9*]/.match(s)
-   #   return false
-   # else
-    #  if /^[10]*00$/.match(s) && is % 2 == 0
-     #   return true
-      #else
-       # return false
-     # end
-   # end
 end
 puts binary_multiple_of_4?(string)
 
