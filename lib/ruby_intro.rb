@@ -19,13 +19,10 @@ Define a method `max_2_sum(array)` which takes an array of integers as an argume
 #needs to be cleaned up utilizing array indexes after sorting (take last two)
 #possible approaches - find max (if there is a ruby method for that) then delete it from array, then take the max again and add the two of them
 array.sort! #sort the array in ascending order
-max = array.max #store maximum element in array in the variable max
-array.pop #pop the end element (the maximum since their sorted)
-new_max = array.max #now take the new maximum
-max_2_sum= max +new_max #and figure out what the sum is
-puts(max_2_sum) #results
+max = array[-1]+array[-2]#the last two array values will be the two largest elements
+puts(max) #results
 end
-puts max_2_sum(arr)
+max_2_sum(arr)
 #potential better approach would be sorting and taking last element, then poping it off, could reduce code by might not
 
 def sum_to_n?(array, n)
@@ -73,18 +70,27 @@ Define a method `binary_multiple_of_4?(s)` that takes a string and returns true 
 You can check your progress on the all the above by running `$ rspec spec/part2_spec.rb`.
 =end
 #I'm going to have to do this the long way
-is = s.to_i
-    if s == "0"
-      return true
-    elsif /[a-zA-Z^$3-9*]/.match(s)
-      return false
-    else
-      if /^[10]*00$/.match(s) && is % 2 == 0
+   if s =~ /\A[01]*\z/
+	 if s.to_i(2)%4 == 0
         return true
       else
         return false
       end
-    end
+	end
+#else
+#return false
+#end
+
+ #     return true
+  #  elsif /[a-zA-Z^$3-9*]/.match(s)
+   #   return false
+   # else
+    #  if /^[10]*00$/.match(s) && is % 2 == 0
+     #   return true
+      #else
+       # return false
+     # end
+   # end
 end
 puts binary_multiple_of_4?(string)
 
@@ -110,6 +116,21 @@ of 20 should format as "$20.00" and a price of 33.8 should format as
 "$33.80". Run associated tests via:  `$ rspec -e '#price_as_string' spec/part3_spec.rb`
 
 =end
-end
+ #attr_reader :isbn
+ # attr_accessor :price
+
+ # def initialize(isbn, price)
+  #  @isbn = isbn
+   # @price = Float(price)
+#if isbn=="" || price<=0
+#raise ArgumentError.new()
+#end  
+#end
+#def price_as_string(
+# "ISBN: #{@isbn}, price: $#{@price}"
+end 
+#book = BookInStock.new("isbn1", 33.80)
+#puts "ISBN = #{book.isbn}"
+#puts "Price = #{book.price}"
 #You can check your progress on the all the above by running `rspec spec/part3_spec.rb`.
-#more challenges in hw-ruby-intro README.md
+/[a-zA-Z^$3-9*]/.match(s)#more challenges in hw-ruby-intro README.md
