@@ -82,7 +82,7 @@ puts binary_multiple_of_4?(string)
 
 # Part 3
 
-class BookInStock
+class BookInStock(isbn, price)
 =begin
 Define a class `BookInStock` which represents a book with an ISBN
 number, `isbn`, and price of the book as a floating-point number,
@@ -101,22 +101,25 @@ the book formatted with a leading dollar sign and two decimal places, that is, a
 of 20 should format as "$20.00" and a price of 33.8 should format as
 "$33.80". Run associated tests via:  `$ rspec -e '#price_as_string' spec/part3_spec.rb`
 
+TO DO:
+* raise ArgumentError if string==empty || price<=0
+* price_as_string with dollar sign and only two decimal places
 =end
- #attr_reader :isbn
- # attr_accessor :price
 
- # def initialize(isbn, price)
-  #  @isbn = isbn
-   # @price = Float(price)
-#if isbn=="" || price<=0
-#raise ArgumentError.new()
-#end  
-#end
-#def price_as_string(
-# "ISBN: #{@isbn}, price: $#{@price}"
+   
+  attr_accessor :isbn, :price
+
+  def initialize isbn, price
+    raise ArgumentError if isbn.empty? || price <= 0
+    @isbn = isbn
+    @price = price
+  end
+    
+    def price_as_string
+    format("$%.2f", @price)
+  end
+
 end 
-#book = BookInStock.new("isbn1", 33.80)
-#puts "ISBN = #{book.isbn}"
-#puts "Price = #{book.price}"
+
 #You can check your progress on the all the above by running `rspec spec/part3_spec.rb`.
-/[a-zA-Z^$3-9*]/.match(s)#more challenges in hw-ruby-intro README.md
+#more challenges in hw-ruby-intro README.md
